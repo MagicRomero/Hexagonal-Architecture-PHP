@@ -1,6 +1,5 @@
 <?php
 
-
 declare(strict_types=1);
 
 namespace Core\Acace\Client\Domain\Contracts;
@@ -13,8 +12,4 @@ interface ClientRepositoryContract
     public function find(ClientAlias $alias): ?Client;
 
     public function save(Client $client): void;
-
-    // public function update(ClientId $id, Client $client): void;
-
-    // public function delete(ClientId $id, Client $client): void;
 }

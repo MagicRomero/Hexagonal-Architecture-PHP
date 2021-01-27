@@ -29,4 +29,11 @@ final class ClientEmail
     {
         return $this->value;
     }
+
+    public function provider(): string
+    {
+        $email = $this->value();
+
+        return mb_substr($email, mb_strripos($email, '@') + 1);
+    }
 }

@@ -4,17 +4,8 @@ declare(strict_types=1);
 
 namespace Core\Acace\Client\Domain\ValueObjects;
 
-final class ClientDescription
+use Core\Shared\Domain\ValueObject\StringValueObject;
+
+final class ClientDescription extends StringValueObject
 {
-    private $value;
-
-    public function __construct(?string $description = null)
-    {
-        $this->value = $description;
-    }
-
-    public function value(): ?string
-    {
-        return $this->value;
-    }
 }

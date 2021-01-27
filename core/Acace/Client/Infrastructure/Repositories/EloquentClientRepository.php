@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Core\Acace\Client\Infrastructure\Repositories;
 
-use Core\Acace\Client\Domain\Client;
 use Core\Acace\Client\Domain\Contracts\ClientRepositoryContract;
 use Core\Acace\Client\Domain\ValueObjects\{ClientId, ClientName, ClientAlias, ClientActive, ClientDescription, ClientEmail};
 use App\Models\Client as EloquentClientModel;
+use Core\Acace\Client\Domain\Client;
 
 final class EloquentClientRepository implements ClientRepositoryContract
 {

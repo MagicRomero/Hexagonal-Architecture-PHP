@@ -4,16 +4,11 @@ declare(strict_types=1);
 
 namespace Core\Acace\Client\Domain\ValueObjects;
 
+use Core\Shared\Domain\ValueObject\StringValueObject;
 use InvalidArgumentException;
 
-final class ClientAlias
+final class ClientAlias extends StringValueObject
 {
-    private $value;
-
-    public function __construct(string $alias)
-    {
-        $this->value = $this->validate($alias);
-    }
 
     public function validate(string $alias): string
     {
@@ -22,11 +17,5 @@ final class ClientAlias
         }
 
         return $alias;
-    }
-
-
-    public function value(): string
-    {
-        return $this->value;
     }
 }

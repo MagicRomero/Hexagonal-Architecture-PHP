@@ -1,5 +1,6 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Core\Acace\Client\Application;
 
@@ -11,7 +12,6 @@ final class CreateClientUseCase
 {
     private $repository;
 
-
     public function __construct(ClientRepositoryContract $repository)
     {
         $this->repository = $repository;
@@ -19,7 +19,7 @@ final class CreateClientUseCase
 
     public function __invoke(string $name, string $alias, string $email, ?bool $active = false, ?string $description): void
     {
-        $clientEntity = Client::create(
+        $Client = Client::create(
             new ClientName($name),
             new ClientAlias($alias),
             new ClientEmail($email),
@@ -27,6 +27,6 @@ final class CreateClientUseCase
             new ClientDescription($description),
         );
 
-        $this->repository->save($clientEntity);
+        $this->repository->save($Client);
     }
 }
