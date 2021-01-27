@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Core\Acace\Client\Infrastructure\Controllers;
 
-use Core\Acace\Client\Application\CreateClientUseCase;
 use Core\Acace\Client\Domain\Contracts\ClientRepositoryContract;
 
 final class CreateClientController
@@ -18,13 +17,13 @@ final class CreateClientController
 
     public function __invoke(array $data): void
     {
-        $createClientUseCase = new CreateClientUseCase($this->repository);
-        $createClientUseCase(
-            $data['name'],
-            $data['alias'],
-            $data['email'],
-            $data['active'] ?? false,
-            $data['description'] ?? null
-        );
+        // $createClientUseCase = new CreateClientUseCase($this->repository);
+        // $createClientUseCase(
+        //     $data['name'],
+        //     $data['alias'],
+        //     $data['email'],
+        //     $data['active'] ?? false,
+        //     $data['description'] ?? null
+        // );
     }
 }

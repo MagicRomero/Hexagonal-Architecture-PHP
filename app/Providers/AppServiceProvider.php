@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             "Core\Acace\Client\Domain\Contracts\ClientRepositoryContract",
-            "Core\Acace\Client\Infrastructure\Repositories\EloquentClientRepository",
+            "Core\Acace\Client\Infrastructure\Persistence\EloquentClientRepository",
         );
     }
 

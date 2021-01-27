@@ -25,7 +25,7 @@ abstract class StringValueObject
         return $value;
     }
 
-    public function value(): ?string
+    public function value(): string
     {
         return $this->value;
     }
