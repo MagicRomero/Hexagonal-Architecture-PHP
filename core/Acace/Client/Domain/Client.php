@@ -9,6 +9,8 @@ final class Client
 {
     private $name;
     private $alias;
+    private $description;
+    private $email;
     private $active;
 
     public function __construct(

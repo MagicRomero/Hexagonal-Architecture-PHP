@@ -3,9 +3,7 @@
 
 namespace Core\Acace\Client\Infrastructure\Controllers;
 
-use App\Http\Requests\CreateClientRequest;
 use Core\Acace\Client\Application\CreateClientUseCase;
-use Core\Acace\Client\Domain\Client;
 use Core\Acace\Client\Domain\Contracts\ClientRepositoryContract;
 
 final class CreateClientController
