@@ -5,9 +5,8 @@ declare(strict_types=1);
 
 namespace Core\Acace\Client\Application\Create;
 
-use Core\Acace\Client\Domain\ValueObjects\{ClientActive, ClientAlias, ClientDescription, ClientEmail, ClientName};
-use Core\Acace\Client\Shared\Domain\Bus\Command\CommandHandler;
-
+use Core\Acace\Client\Domain\ValueObjects\{ClientActive, ClientAlias, ClientDescription, ClientEmail, ClientId, ClientName};
+use Core\Shared\Domain\Bus\Command\CommandHandler;
 
 final class CreateClientCommandHandler implements CommandHandler
 {
@@ -20,12 +19,13 @@ final class CreateClientCommandHandler implements CommandHandler
 
     public function __invoke(CreateClientCommand $command)
     {
-        $name =   new ClientName($command->name());
-        $alias =   new ClientAlias($command->alias());
-        $email =  new ClientEmail($command->email());
+        $id = new ClientId($command->id());
+        $name = new ClientName($command->name());
+        $alias = new ClientAlias($command->alias());
+        $email = new ClientEmail($command->email());
         $active = new ClientActive($command->active());
-        $description =  new ClientDescription($command->description());
+        $description = new ClientDescription($command->description());
 
-        $this->creator->create($name, $alias, $email, $active, $description);
+        $this->creator->create($id, $name, $alias, $email, $active, $description);
     }
 }

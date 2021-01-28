@@ -33,6 +33,6 @@ final class EloquentClientRepository implements ClientRepositoryContract
 
     public function save(Client $client): void
     {
-        $this->model->create($client->asArray());
+        $this->model->create($client->asPrimitiveArray());
     }
 }

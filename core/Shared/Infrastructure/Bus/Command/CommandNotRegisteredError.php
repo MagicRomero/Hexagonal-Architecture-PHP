@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Core\Acace\Client\Shared\Infrastructure\Bus\Command;
+namespace Core\Shared\Infrastructure\Bus\Command;
 
-use Core\Acace\Client\Shared\Domain\Bus\Command\Command;
+use Core\Shared\Domain\Bus\Command\Command;
 use RuntimeException;
 
 final class CommandNotRegisteredError extends RuntimeException

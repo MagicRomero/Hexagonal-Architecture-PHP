@@ -6,7 +6,7 @@ namespace Core\Acace\Client\Application\Create;
 
 use Core\Acace\Client\Domain\Client;
 use Core\Acace\Client\Domain\Contracts\ClientRepositoryContract;
-use Core\Acace\Client\Domain\ValueObjects\{ClientActive, ClientAlias, ClientDescription, ClientEmail, ClientName};
+use Core\Acace\Client\Domain\ValueObjects\{ClientActive, ClientAlias, ClientDescription, ClientEmail, ClientId, ClientName};
 
 final class ClientCreator
 {
@@ -18,6 +18,7 @@ final class ClientCreator
     }
 
     public function create(
+        ClientId $id,
         ClientName $name,
         ClientAlias $alias,
         ClientEmail $email,
@@ -25,7 +26,7 @@ final class ClientCreator
         ?ClientDescription $description = null
     ): void {
 
-        $client = Client::create($name, $alias, $email, $active, $description);
+        $client = Client::create($id, $name, $alias, $email, $active, $description);
 
         $this->repository->save($client);
     }

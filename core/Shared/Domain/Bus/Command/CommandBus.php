@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Core\Acace\Client\Shared\Domain\Bus\Command;
+namespace Core\Shared\Domain\Bus\Command;
 
 interface CommandBus
 {

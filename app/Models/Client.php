@@ -18,6 +18,7 @@ class Client extends Model
     public $incrementing = false;
 
     public static $rules = [
+        'id' => 'nullable|uuid',
         'name' => 'required|string|max:200',
         'alias' => 'required|regex:/^[\S]+$/', //Permite cualquier caracter excepto espacios en blanco
         'description' => 'nullable|string|max:255',

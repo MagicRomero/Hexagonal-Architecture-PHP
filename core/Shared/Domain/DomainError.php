@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Core\Acace\Shared\Domain;
+namespace Core\Shared\Domain;
 
 use DomainException;
 

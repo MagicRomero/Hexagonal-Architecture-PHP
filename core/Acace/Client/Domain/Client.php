@@ -15,14 +15,14 @@ final class Client
     private $active;
 
     public function __construct(
-        // ClientId $id,
+        ClientId $id,
         ClientName $name,
         ClientAlias $alias,
         ClientEmail $email,
         ClientActive $active,
         ?ClientDescription $description = null
     ) {
-        // $this->id = $id;
+        $this->id = $id;
         $this->name = $name;
         $this->alias = $alias;
         $this->description = $description;
@@ -30,10 +30,10 @@ final class Client
         $this->active = $active;
     }
 
-    // public function id(): ClientId
-    // {
-    //     return $this->id;
-    // }
+    public function id(): ClientId
+    {
+        return $this->id;
+    }
 
     public function name(): ClientName
     {
@@ -61,17 +61,17 @@ final class Client
     }
 
     public static function create(
-        // ClientId $id,
+        ClientId $id,
         ClientName $name,
         ClientAlias $alias,
         ClientEmail $email,
         ClientActive $active,
         ?ClientDescription $description = null
     ) {
-        return new self($name, $alias, $email, $active, $description);
+        return new self($id, $name, $alias, $email, $active, $description);
     }
 
-    public function asArray(): array
+    public function asPrimitiveArray(): array
     {
         return [
             'name' => $this->name()->value(),

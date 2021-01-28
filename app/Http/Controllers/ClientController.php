@@ -3,23 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateClientRequest;
-use Core\Acace\Client\Domain\Contracts\ClientRepositoryContract;
-use Core\Acace\Client\Infrastructure\Controllers\CreateClientController;
+use Core\Acace\Client\Infrastructure\Services\CreateClientService;
+use Core\Shared\Infrastructure\Bus\Command\LaravelCommandBus;
+use Ramsey\Uuid\Uuid;
 
 class ClientController extends Controller
 {
-    private $clientRepository;
+    protected $bus;
 
-    public function __construct(ClientRepositoryContract $clientRepository)
+    public function __construct(LaravelCommandBus $bus)
     {
-        $this->clientRepository = $clientRepository;
+        $this->bus = $bus;
     }
 
     public function create(CreateClientRequest $request)
     {
         try {
-            $createClientController = new CreateClientController($this->clientRepository);
-            $createClientController($request->validated());
+            $data = array_merge(
+                $request->validated(),
+                ['id' => $request->filled('id') ? $request->id : Uuid::uuid4()->toString()]
+            );
+
+            $createClientService = new CreateClientService($this->bus);
+            $createClientService($data);
 
             return response()->json(['success' => true, 'message' => "Cliente creado con éxito"], 201);
         } catch (\Illuminate\Database\QueryException $error) {
