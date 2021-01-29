@@ -16,10 +16,12 @@ final class LaravelCommandBus implements CommandBus
         $this->bus = $bus;
     }
 
-    //@TODO - IMPLEMENTAR EL MESSAGE BUS PARA DISPATCH COMMANDOS
     public function dispatch(Command $command): void
     {
-        //@TODO - HAY QUE VER COMO MANEJAR LAS EXCEPCIONES EN EL BUS DE COMANDOS
+        if (!class_exists(get_class($command))) {
+            throw new CommandNotRegisteredError($command);
+        }
+
         $this->bus->dispatch($command);
     }
 }

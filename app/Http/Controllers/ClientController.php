@@ -16,7 +16,7 @@ class ClientController extends Controller
         $this->bus = $bus;
     }
 
-    public function create(CreateClientRequest $request)
+    public function store(CreateClientRequest $request)
     {
         try {
             $data = array_merge(

@@ -20,5 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::post('client/create', [ClientController::class, 'create'])
+Route::post('client/create', [ClientController::class, 'store'])
     ->name('client.create');

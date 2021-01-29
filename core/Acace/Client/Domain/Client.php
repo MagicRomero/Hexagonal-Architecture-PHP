@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace Core\Acace\Client\Domain;
 
 use Core\Acace\Client\Domain\ValueObjects\{ClientActive, ClientAlias, ClientDescription, ClientEmail, ClientId, ClientName};
+use Core\Shared\Domain\Aggregate\AggregateRoot;
 
-final class Client
+final class Client extends AggregateRoot
 {
     private $name;
     private $alias;

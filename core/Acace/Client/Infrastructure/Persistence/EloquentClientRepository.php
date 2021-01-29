@@ -23,6 +23,7 @@ final class EloquentClientRepository implements ClientRepositoryContract
         $client = $this->model->findOrFail($alias->value());
 
         return new Client(
+            new ClientId($client->id),
             new ClientName($client->name),
             new ClientAlias($client->alias),
             new ClientEmail($client->email),
