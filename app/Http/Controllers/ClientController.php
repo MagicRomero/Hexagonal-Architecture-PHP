@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateClientRequest;
 use Core\Acace\Client\Infrastructure\Services\CreateClientService;
-use Core\Shared\Infrastructure\Bus\Command\LaravelCommandBus;
+use Core\Shared\Domain\Bus\Command\CommandBus;
 use Ramsey\Uuid\Uuid;
 
 class ClientController extends Controller
 {
     protected $bus;
 
-    public function __construct(LaravelCommandBus $bus)
+    public function __construct(CommandBus $bus)
     {
         $this->bus = $bus;
     }

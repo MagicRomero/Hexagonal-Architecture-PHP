@@ -5,15 +5,11 @@ declare(strict_types=1);
 namespace Core\Acace\Client\Infrastructure\Services;
 
 use Core\Acace\Client\Application\Create\CreateClientCommand;
-use Core\Shared\Domain\Bus\Command\CommandBus;
+use Core\Shared\Infrastructure\Services\BaseService;
 
-final class CreateClientService
+final class CreateClientService extends BaseService
 {
-    private $bus;
-    public function __construct(CommandBus $bus)
-    {
-        $this->bus = $bus;
-    }
+
     public function __invoke(array $data): void
     {
         $this->bus->dispatch(new CreateClientCommand(

@@ -12,12 +12,12 @@ use Core\Shared\Domain\Bus\Event\EventBus;
 final class ClientCreator
 {
     private $repository;
-    private $eventBus;
+    // private $eventBus;
 
-    public function __construct(ClientRepositoryContract $repository, EventBus $eventBus)
+    public function __construct(ClientRepositoryContract $repository/*, EventBus $eventBus*/)
     {
         $this->repository = $repository;
-        $this->eventBus = $eventBus;
+        // $this->eventBus = $eventBus;
     }
 
     public function create(

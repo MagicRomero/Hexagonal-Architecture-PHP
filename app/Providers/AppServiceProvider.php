@@ -21,8 +21,12 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
-            "Core\Acace\Shared\Domain\Bus\CommandBus",
-            "Core\Acace\Shared\Infrastructure/Bus/Command/LaravelCommandBus"
+            "Core\Shared\Domain\Bus\Command\CommandBus",
+            "Core\Shared\Infrastructure\Bus\Command\LaravelCommandBus"
+        );
+
+        $this->app->bind(
+            "Core\Shared\Domain\Bus\Event\EventBus"
         );
     }
 
