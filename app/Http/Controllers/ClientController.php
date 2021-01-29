@@ -3,17 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateClientRequest;
-use Core\Acace\Client\Infrastructure\Services\CreateClientService;
-use Core\Shared\Domain\Bus\Command\CommandBus;
+use Core\Acace\Client\Infrastructure\Services\ClientService;
 use Ramsey\Uuid\Uuid;
 
 class ClientController extends Controller
 {
-    protected $bus;
+    private $clientService;
 
-    public function __construct(CommandBus $bus)
+    public function __construct(ClientService $clientService)
     {
-        $this->bus = $bus;
+        $this->clientService = $clientService;
     }
 
     public function store(CreateClientRequest $request)
@@ -24,8 +23,7 @@ class ClientController extends Controller
                 ['id' => $request->filled('id') ? $request->id : Uuid::uuid4()->toString()]
             );
 
-            $createClientService = new CreateClientService($this->bus);
-            $createClientService($data);
+            $this->clientService->create($data);
 
             return response()->json(['success' => true, 'message' => "Cliente creado con éxito"], 201);
         } catch (\Illuminate\Database\QueryException $error) {

@@ -9,13 +9,12 @@ use InvalidArgumentException;
 
 final class ClientAlias extends StringValueObject
 {
-
-    public function validate(string $alias): string
+    public function validate(string $value): string
     {
-        if (!filter_var($alias, FILTER_SANITIZE_STRING) || preg_match('/\s/', $alias)) {
-            throw new InvalidArgumentException(static::class  . " the value {$alias} is not allowed");
+        if (!parent::validate($value) || preg_match('/\s/', $value)) {
+            throw new InvalidArgumentException(static::class  . " the value {$value} is not allowed");
         }
 
-        return $alias;
+        return $value;
     }
 }

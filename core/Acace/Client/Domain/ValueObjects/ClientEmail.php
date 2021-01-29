@@ -10,18 +10,20 @@ final class ClientEmail
 {
     private $value;
 
-    public function __construct(string $email)
+    public function __construct(string $value)
     {
-        $this->value = $this->validate($email);
+        $this->value = $this->validate($value);
     }
 
-    public function validate(string $email): string
+    public function validate(string $value): string
     {
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            throw new InvalidArgumentException(static::class  . " the value {$email} is not allowed");
+        $value_sanitized = filter_var($value, FILTER_SANITIZE_EMAIL);
+
+        if (!filter_var($value_sanitized, FILTER_VALIDATE_EMAIL)) {
+            throw new InvalidArgumentException(static::class  . " the value {$value} is not allowed");
         }
 
-        return $email;
+        return $value_sanitized;
     }
 
 
@@ -34,6 +36,6 @@ final class ClientEmail
     {
         $email = $this->value();
 
-        return mb_substr($email, mb_strripos($email, '@') + 1);
+        return mb_substr($value, mb_strripos($value, '@') + 1);
     }
 }

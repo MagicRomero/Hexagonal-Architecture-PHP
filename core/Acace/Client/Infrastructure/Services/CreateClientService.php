@@ -7,10 +7,9 @@ namespace Core\Acace\Client\Infrastructure\Services;
 use Core\Acace\Client\Application\Create\CreateClientCommand;
 use Core\Shared\Infrastructure\Services\BaseService;
 
-final class CreateClientService extends BaseService
+final class ClientService extends BaseService
 {
-
-    public function __invoke(array $data): void
+    public function create(array $data): void
     {
         $this->bus->dispatch(new CreateClientCommand(
             $data['id'],
